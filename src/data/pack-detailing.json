@@ -1,0 +1,753 @@
+{
+  "vertical": "detailing",
+  "operator": {
+    "techs": 1,
+    "wagePerHour": 50,
+    "labourBurden": 0.0,
+    "burdenedLabourRate": 50,
+    "jobsPerWeekPerTech": 10,
+    "avgHoursPerJob": 4,
+    "billableHoursPerMonth": 173.2,
+    "monthlyOverhead": 1915,
+    "overheadRatePerHour": 11.0566,
+    "targetMargin": 0.5,
+    "loadedRatePerHour": 61.0566
+  },
+  "overheadLines": [
+    {
+      "label": "Facility rent / mortgage",
+      "monthly": 0
+    },
+    {
+      "label": "Facility utilities",
+      "monthly": 0
+    },
+    {
+      "label": "Vehicle payments",
+      "monthly": 650
+    },
+    {
+      "label": "Vehicle insurance",
+      "monthly": 220
+    },
+    {
+      "label": "Business / liability insurance",
+      "monthly": 85
+    },
+    {
+      "label": "Fuel",
+      "monthly": 300
+    },
+    {
+      "label": "Vehicle maintenance",
+      "monthly": 120
+    },
+    {
+      "label": "Equipment replacement",
+      "monthly": 150
+    },
+    {
+      "label": "Phone and internet",
+      "monthly": 90
+    },
+    {
+      "label": "Software and subscriptions",
+      "monthly": 80
+    },
+    {
+      "label": "Marketing and advertising",
+      "monthly": 150
+    },
+    {
+      "label": "Licences, permits, accounting",
+      "monthly": 70
+    },
+    {
+      "label": "Other",
+      "monthly": 0
+    }
+  ],
+  "sizeMultipliers": [
+    {
+      "size": "Medium",
+      "multiplier": 1.0,
+      "example": "All services. Labour minutes are averages across real vehicles \u2014 size scaling is deferred until minutes are re-baselined to a medium vehicle."
+    }
+  ],
+  "consumables": [
+    {
+      "id": "C01",
+      "product": "Heavy degreaser",
+      "containerSize": 640,
+      "containerPrice": 42,
+      "dilution": 10,
+      "costPerReadyToUseUnit": 0.005966,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C02",
+      "product": "Wheel cleaner",
+      "containerSize": 128,
+      "containerPrice": 24,
+      "dilution": 4,
+      "costPerReadyToUseUnit": 0.0375,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C03",
+      "product": "pH neutral soap",
+      "containerSize": 128,
+      "containerPrice": 19,
+      "dilution": 4,
+      "costPerReadyToUseUnit": 0.029687,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C04",
+      "product": "Iron remover",
+      "containerSize": 128,
+      "containerPrice": 32,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 0.25,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C05",
+      "product": "Clay lube",
+      "containerSize": 128,
+      "containerPrice": 18,
+      "dilution": 8,
+      "costPerReadyToUseUnit": 0.015625,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C06",
+      "product": "Interior cleaner",
+      "containerSize": 128,
+      "containerPrice": 21,
+      "dilution": 10,
+      "costPerReadyToUseUnit": 0.014915,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C07",
+      "product": "Glass cleaner",
+      "containerSize": 128,
+      "containerPrice": 15,
+      "dilution": 4,
+      "costPerReadyToUseUnit": 0.023438,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C08",
+      "product": "Tire dressing",
+      "containerSize": 128,
+      "containerPrice": 28,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 0.21875,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C09",
+      "product": "Spray sealant",
+      "containerSize": 128,
+      "containerPrice": 45,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 0.351562,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C10",
+      "product": "Ceramic coating",
+      "containerSize": 1.7,
+      "containerPrice": 65,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 38.235294,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C11",
+      "product": "P&S carpet shampoo",
+      "containerSize": 128,
+      "containerPrice": 28,
+      "dilution": 2,
+      "costPerReadyToUseUnit": 0.072917,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C12",
+      "product": "Cutting compound",
+      "containerSize": 16,
+      "containerPrice": 24,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 1.5,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C13",
+      "product": "Finishing polish",
+      "containerSize": 16,
+      "containerPrice": 28,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 1.75,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C14",
+      "product": "Panel prep / IPA",
+      "containerSize": 32,
+      "containerPrice": 14,
+      "dilution": 2,
+      "costPerReadyToUseUnit": 0.145833,
+      "note": "Personal spreadsheet"
+    },
+    {
+      "id": "C15",
+      "product": "Cutting pad",
+      "containerSize": 4,
+      "containerPrice": 18,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 4.5,
+      "note": "Size = jobs one pad survives"
+    },
+    {
+      "id": "C16",
+      "product": "Polishing pad",
+      "containerSize": 4,
+      "containerPrice": 14,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 3.5,
+      "note": "Size = jobs one pad survives"
+    },
+    {
+      "id": "C17",
+      "product": "Microfiber towels (set)",
+      "containerSize": 3,
+      "containerPrice": 6,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 2,
+      "note": "Size = jobs one set survives"
+    },
+    {
+      "id": "C18",
+      "product": "Sandpaper / headlight kit",
+      "containerSize": 18,
+      "containerPrice": 60,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 3.333333,
+      "note": "Size = jobs one kit survives"
+    },
+    {
+      "id": "C19",
+      "product": "Masking tape",
+      "containerSize": 6,
+      "containerPrice": 12,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 2,
+      "note": "ESTIMATE \u2014 adjust"
+    },
+    {
+      "id": "C20",
+      "product": "Coating applicator + suede",
+      "containerSize": 1,
+      "containerPrice": 9,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 9,
+      "note": "ESTIMATE \u2014 adjust"
+    },
+    {
+      "id": "C21",
+      "product": "Nitrile gloves",
+      "containerSize": 25,
+      "containerPrice": 18,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 0.72,
+      "note": "ESTIMATE \u2014 adjust"
+    },
+    {
+      "id": "C22",
+      "product": "Drying aid / detail spray",
+      "containerSize": 128,
+      "containerPrice": 22,
+      "dilution": 0,
+      "costPerReadyToUseUnit": 0.171875,
+      "note": "ESTIMATE \u2014 adjust"
+    }
+  ],
+  "services": [
+    {
+      "id": "S01",
+      "name": "Maintenance wash",
+      "measureUnit": "vehicle",
+      "labourMinutes": 60,
+      "currentPrice": 75
+    },
+    {
+      "id": "S02",
+      "name": "Full exterior decon + sealant",
+      "measureUnit": "vehicle",
+      "labourMinutes": 180,
+      "currentPrice": 175
+    },
+    {
+      "id": "S03",
+      "name": "Full interior detail",
+      "measureUnit": "vehicle",
+      "labourMinutes": 210,
+      "currentPrice": 200
+    },
+    {
+      "id": "S04",
+      "name": "Interior + exterior full detail",
+      "measureUnit": "vehicle",
+      "labourMinutes": 360,
+      "currentPrice": 275
+    },
+    {
+      "id": "S05",
+      "name": "Engine bay clean",
+      "measureUnit": "vehicle",
+      "labourMinutes": 40,
+      "currentPrice": 75
+    },
+    {
+      "id": "S06",
+      "name": "1-step paint correction",
+      "measureUnit": "vehicle",
+      "labourMinutes": 300,
+      "currentPrice": 450
+    },
+    {
+      "id": "S07",
+      "name": "Ceramic coating application",
+      "measureUnit": "vehicle",
+      "labourMinutes": 480,
+      "currentPrice": 700
+    },
+    {
+      "id": "S08",
+      "name": "Headlight restoration",
+      "measureUnit": "vehicle",
+      "labourMinutes": 45,
+      "currentPrice": 75
+    },
+    {
+      "id": "S09",
+      "name": "Boat interior",
+      "measureUnit": "boat",
+      "labourMinutes": 240,
+      "currentPrice": 250
+    },
+    {
+      "id": "S10",
+      "name": "Boat polish",
+      "measureUnit": "boat",
+      "labourMinutes": 120,
+      "currentPrice": 400
+    }
+  ],
+  "serviceConsumables": [
+    {
+      "serviceId": "S01",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S01",
+      "consumableId": "C02",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.15
+    },
+    {
+      "serviceId": "S01",
+      "consumableId": "C07",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 0.0703
+    },
+    {
+      "serviceId": "S01",
+      "consumableId": "C08",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 1.0938
+    },
+    {
+      "serviceId": "S01",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C02",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.15
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C04",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 1.25
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C05",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 0.0938
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C09",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 2.8125
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C08",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.875
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S02",
+      "consumableId": "C22",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.6875
+    },
+    {
+      "serviceId": "S03",
+      "consumableId": "C06",
+      "qtyPerMediumUnit": 7,
+      "costPerMediumUnit": 0.1044
+    },
+    {
+      "serviceId": "S03",
+      "consumableId": "C11",
+      "qtyPerMediumUnit": 12,
+      "costPerMediumUnit": 0.875
+    },
+    {
+      "serviceId": "S03",
+      "consumableId": "C07",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 0.0703
+    },
+    {
+      "serviceId": "S03",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S03",
+      "consumableId": "C21",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 0.72
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C02",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.15
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C04",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 1.25
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C05",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 0.0938
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C09",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 2.8125
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C06",
+      "qtyPerMediumUnit": 7,
+      "costPerMediumUnit": 0.1044
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C11",
+      "qtyPerMediumUnit": 12,
+      "costPerMediumUnit": 0.875
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C07",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 0.0703
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C08",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 1.0938
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 2,
+      "costPerMediumUnit": 4
+    },
+    {
+      "serviceId": "S04",
+      "consumableId": "C21",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 0.72
+    },
+    {
+      "serviceId": "S05",
+      "consumableId": "C01",
+      "qtyPerMediumUnit": 15,
+      "costPerMediumUnit": 0.0895
+    },
+    {
+      "serviceId": "S05",
+      "consumableId": "C08",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 0.6562
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C05",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 0.0938
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C12",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 6
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C13",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 10.5
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C14",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.5833
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C15",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 13.5
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C16",
+      "qtyPerMediumUnit": 2,
+      "costPerMediumUnit": 7
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 2,
+      "costPerMediumUnit": 4
+    },
+    {
+      "serviceId": "S06",
+      "consumableId": "C19",
+      "qtyPerMediumUnit": 0.5,
+      "costPerMediumUnit": 1
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C04",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 1.5
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C05",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 0.0938
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C12",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 7.5
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C13",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 10.5
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C14",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.5833
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C10",
+      "qtyPerMediumUnit": 0.5,
+      "costPerMediumUnit": 19.1176
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C15",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 18
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C16",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 10.5
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 6
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C19",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C20",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 9
+    },
+    {
+      "serviceId": "S07",
+      "consumableId": "C21",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 0.72
+    },
+    {
+      "serviceId": "S08",
+      "consumableId": "C18",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 3.3333
+    },
+    {
+      "serviceId": "S08",
+      "consumableId": "C13",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 10.5
+    },
+    {
+      "serviceId": "S08",
+      "consumableId": "C09",
+      "qtyPerMediumUnit": 5,
+      "costPerMediumUnit": 1.7578
+    },
+    {
+      "serviceId": "S09",
+      "consumableId": "C06",
+      "qtyPerMediumUnit": 12,
+      "costPerMediumUnit": 0.179
+    },
+    {
+      "serviceId": "S09",
+      "consumableId": "C11",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.5833
+    },
+    {
+      "serviceId": "S09",
+      "consumableId": "C07",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 0.0938
+    },
+    {
+      "serviceId": "S09",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C03",
+      "qtyPerMediumUnit": 8,
+      "costPerMediumUnit": 0.2375
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C12",
+      "qtyPerMediumUnit": 4,
+      "costPerMediumUnit": 6
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C13",
+      "qtyPerMediumUnit": 6,
+      "costPerMediumUnit": 10.5
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C15",
+      "qtyPerMediumUnit": 3,
+      "costPerMediumUnit": 13.5
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C16",
+      "qtyPerMediumUnit": 2,
+      "costPerMediumUnit": 7
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C17",
+      "qtyPerMediumUnit": 1,
+      "costPerMediumUnit": 2
+    },
+    {
+      "serviceId": "S10",
+      "consumableId": "C19",
+      "qtyPerMediumUnit": 0.5,
+      "costPerMediumUnit": 1
+    }
+  ]
+}
