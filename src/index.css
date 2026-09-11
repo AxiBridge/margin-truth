@@ -44,3 +44,53 @@ input[type=number] { -moz-appearance: textfield; }
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0);   }
 }
+
+/* ─── Quote slider ─────────────────────────────────────────────────────────── */
+/* Ledger, not a toy: a hairline track and a square-ish ink handle.            */
+
+.mt-quote-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 26px;
+  margin: 0;
+  touch-action: none;
+}
+
+.mt-quote-slider:focus { outline: none; }
+
+.mt-quote-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #C9C3B8;
+  border-radius: 1px;
+}
+
+.mt-quote-slider::-moz-range-track {
+  height: 2px;
+  background: #C9C3B8;
+  border-radius: 1px;
+}
+
+.mt-quote-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -13px;
+  border-radius: 6px;
+  background: #1C1A17;
+  border: 2px solid #F7F4EE;
+  cursor: grab;
+}
+
+.mt-quote-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #1C1A17;
+  border: 2px solid #F7F4EE;
+  cursor: grab;
+}
+
+.mt-quote-slider:active::-webkit-slider-thumb { cursor: grabbing; }
+.mt-quote-slider:active::-moz-range-thumb { cursor: grabbing; }
