@@ -11,9 +11,10 @@ import { FloorBar } from './FloorBar'
  * The slider will not pass below the floor. Going below requires a reason code,
  * and the reason is recorded against the dollars given away.
  */
-export function QuoteScreen({ config, onBack }: {
+export function QuoteScreen({ config, onBack, onAccept }: {
   config: Config
   onBack: () => void
+  onAccept: (job: { serviceId: string; price: number; reason: string; ov: Overrides }) => void
 }) {
   const [serviceId, setServiceId] = useState(config.services[0].id)
   const [ov, setOv] = useState<Overrides>({ labourMinutes: null, wagePerHour: null, consumableQtys: {} })
@@ -67,11 +68,16 @@ export function QuoteScreen({ config, onBack }: {
     <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
-        <button onClick={onBack}
-          className="self-start text-[13px] text-ink-3 -ml-1 px-1 py-1"
-        >
-          ← Back
-        </button>
+        <div className="flex items-center justify-between">
+          <button onClick={onBack} className="text-[13px] text-ink-3 -ml-1 px-1 py-1">← Back</button>
+          <div className="flex items-center gap-1.5">
+            {[1, 2, 3].map(i => (
+              <span key={i} className="rounded-full"
+                style={{ width: i === 1 ? 18 : 6, height: 6,
+                         background: i <= 1 ? 'var(--color-ink)' : 'var(--color-rule)' }} />
+            ))}
+          </div>
+        </div>
 
         {/* Service */}
         <div className="space-y-2">
@@ -203,6 +209,13 @@ export function QuoteScreen({ config, onBack }: {
         <p className="text-[12px] text-ink-3 text-center leading-relaxed">
           Every number here is yours except product coverage rates.
         </p>
+
+        <button
+          onClick={() => onAccept({ serviceId, price: shown, reason: below ? reason : '', ov })}
+          className="w-full h-12 bg-accent text-accent-ink text-[15px] font-medium rounded-[6px] mt-auto"
+        >
+          Send quote &amp; book it
+        </button>
 
         <Wordmark />
       </div>

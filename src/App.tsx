@@ -6,6 +6,7 @@ import {
 import { Chevron, Expand, SectionLabel, FloorStack } from './FloorStack'
 import { FloorBar } from './FloorBar'
 import { QuoteScreen } from './QuoteScreen'
+import { CloseOutScreen, RealisedScreen, NextScreen, type Job, type CloseOut } from './JobFlow'
 
 // ─── Config panel ─────────────────────────────────────────────────────────────
 
@@ -374,7 +375,7 @@ function ResultScreen({ serviceId, charged, config, onBack }: {
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
-type Mode = 'home' | 'retro' | 'result' | 'quote'
+type Mode = 'home' | 'retro' | 'result' | 'quote' | 'closeout' | 'realised' | 'next'
 
 function HomeScreen({ config, onConfigChange, onPick }: {
   config: Config
@@ -420,6 +421,8 @@ export default function App() {
   const [config, setConfig] = useState<Config>(loadConfig)
   const [mode, setMode]     = useState<Mode>('home')
   const [job, setJob]       = useState<{ serviceId: string; charged: number } | null>(null)
+  const [live, setLive]     = useState<Job | null>(null)
+  const [close, setClose]   = useState<CloseOut | null>(null)
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -429,7 +432,30 @@ export default function App() {
   }, [config])
 
   if (mode === 'quote') {
-    return <QuoteScreen config={config} onBack={() => setMode('home')} />
+    return (
+      <QuoteScreen config={config} onBack={() => setMode('home')}
+        onAccept={j => { setLive(j); setMode('closeout') }} />
+    )
+  }
+
+  if (mode === 'closeout' && live) {
+    return (
+      <CloseOutScreen config={config} job={live}
+        onBack={() => setMode('quote')}
+        onDone={c => { setClose(c); setMode('realised') }} />
+    )
+  }
+
+  if (mode === 'realised' && live && close) {
+    return (
+      <RealisedScreen config={config} job={live} close={close}
+        onBack={() => setMode('closeout')}
+        onNext={() => setMode('next')} />
+    )
+  }
+
+  if (mode === 'next') {
+    return <NextScreen onRestart={() => { setLive(null); setClose(null); setMode('home') }} />
   }
 
   if (mode === 'result' && job) {
