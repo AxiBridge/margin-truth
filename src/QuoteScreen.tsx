@@ -65,7 +65,7 @@ export function QuoteScreen({ config, onBack, onAccept }: {
   }
 
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
         <div className="flex items-center justify-between">
@@ -111,7 +111,7 @@ export function QuoteScreen({ config, onBack, onAccept }: {
           }}>
             Quote
           </p>
-          <p className="text-[28px] font-medium leading-[1.2]" style={{
+          <p className="mt-display text-[28px] font-medium leading-[1.2]" style={{
             color: below ? 'var(--color-breach-em)' : 'var(--color-clear-em)',
           }}>
             {usd(shown)}
@@ -149,8 +149,14 @@ export function QuoteScreen({ config, onBack, onAccept }: {
           </div>
 
           <div className="flex justify-between text-[12px] text-ink-3">
-            <span>Floor {usd0(floor)}</span>
-            <span>Target {usd0(targetPrice)}</span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block" style={{ width: 2, height: 10, background: 'var(--color-ink)' }} />
+              Floor {usd0(floor)}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="inline-block" style={{ width: 2, height: 10, background: 'var(--color-rule-strong)' }} />
+              Target {usd0(targetPrice)}
+            </span>
           </div>
 
           {atRail && !unlocked && (
@@ -224,5 +230,5 @@ export function QuoteScreen({ config, onBack, onAccept }: {
 }
 
 function Wordmark() {
-  return <p className="text-[12px] text-ink-3 text-center mt-auto pt-2">Margin Truth</p>
+  return <p className="text-[12px] text-ink-3 text-center mt-auto pt-3 pb-1">Margin Truth</p>
 }

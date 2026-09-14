@@ -19,7 +19,7 @@ export interface CloseOut {
 }
 
 function Wordmark() {
-  return <p className="text-[12px] text-ink-3 text-center mt-auto pt-2">Margin Truth</p>
+  return <p className="text-[12px] text-ink-3 text-center mt-auto pt-3 pb-1">Margin Truth</p>
 }
 
 function Stepper({ n }: { n: 1 | 2 | 3 }) {
@@ -73,7 +73,7 @@ export function CloseOutScreen({ config, job, onDone, onBack }: {
   }
 
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
         <div className="flex items-center justify-between">
@@ -116,7 +116,7 @@ export function CloseOutScreen({ config, job, onDone, onBack }: {
             () => setProductFactor(f => Math.min(2.5, Math.round((f + 0.1) * 10) / 10)),
           )}
           {field(
-            'Knocked off on site',
+            'Discount given on site',
             discount === 0 ? 'Nothing' : usd(discount),
             () => setDiscount(d => Math.max(0, d - 10)),
             () => setDiscount(d => d + 10),
@@ -177,11 +177,11 @@ export function RealisedScreen({ config, job, close, onNext, onBack }: {
     causes.push({ label: 'Product over plan', amount: rProduct - quoted.consumableCost })
   }
   if (close.discount > 0) {
-    causes.push({ label: 'Knocked off on site', amount: close.discount })
+    causes.push({ label: 'Discount given on site', amount: close.discount })
   }
 
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
         <div className="flex items-center justify-between">
@@ -202,7 +202,7 @@ export function RealisedScreen({ config, job, close, onNext, onBack }: {
           }}>
             You quoted {usd(quotedMargin)} of margin.
           </p>
-          <p className="text-[28px] font-medium leading-[1.2]" style={{
+          <p className="mt-display text-[28px] font-medium leading-[1.2]" style={{
             color: lost || worse ? 'var(--color-breach-em)' : 'var(--color-clear-em)',
           }}>
             {lost
@@ -246,7 +246,7 @@ export function RealisedScreen({ config, job, close, onNext, onBack }: {
             ))}
             {job.reason && (
               <div className="px-5 py-3 flex justify-between items-center gap-3">
-                <span className="text-ink text-[15px]">Quoted below floor — {job.reason}</span>
+                <span className="text-ink text-[15px]">Quoted below floor: {job.reason}</span>
                 <span className="text-ink text-[15px] tabular-nums shrink-0">
                   −{usd(Math.abs(Math.min(0, quotedMargin)))}
                 </span>
@@ -275,12 +275,12 @@ export function RealisedScreen({ config, job, close, onNext, onBack }: {
 
 export function NextScreen({ onRestart }: { onRestart: () => void }) {
   const steps = [
-    { t: 'Invoice', d: 'One tap from close-out, carrying the real numbers — not the quoted ones.' },
+    { t: 'Invoice', d: 'One tap from close-out, carrying the real numbers, not the quoted ones.' },
     { t: 'Payment', d: 'Interac request from the invoice. Paid marks the job closed.' },
     { t: 'Sunday digest', d: 'Three lines: jobs closed, quoted vs realised in dollars, one decision.' },
   ]
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
         <div>

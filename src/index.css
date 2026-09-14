@@ -94,3 +94,64 @@ input[type=number] { -moz-appearance: textfield; }
 
 .mt-quote-slider:active::-webkit-slider-thumb { cursor: grabbing; }
 .mt-quote-slider:active::-moz-range-thumb { cursor: grabbing; }
+
+/* ─── Polish pass ──────────────────────────────────────────────────────────── */
+/* The system stays the system: warm paper, hairlines, one saturated block.    */
+/* What changes is the feel in the hand, press, focus, motion, safe areas.     */
+
+:root {
+  --mt-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+::selection { background: #E4DFD6; color: #1C1A17; }
+
+/* Full-bleed on a phone home screen, clear of the notch and the home bar. */
+.mt-screen {
+  padding-top:    calc(env(safe-area-inset-top) + 2rem);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 2rem);
+  animation: mt-screen-in 260ms var(--mt-ease) both;
+}
+
+@keyframes mt-screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Every tap answers back. */
+button {
+  transition: transform 120ms var(--mt-ease),
+              opacity   120ms var(--mt-ease),
+              background-color 140ms var(--mt-ease),
+              border-color 140ms var(--mt-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+button:active:not(:disabled) { transform: scale(0.985); opacity: 0.88; }
+button:disabled { cursor: default; }
+
+/* Keyboard focus is visible; mouse focus is not. */
+:focus-visible {
+  outline: 2px solid #1C1A17;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Ledger figures: tighter, so big numbers read as one shape. */
+.mt-display {
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Rows that open and close. */
+select, input {
+  transition: border-color 140ms var(--mt-ease), background-color 140ms var(--mt-ease);
+}
+
+/* Respect the system setting. Motion is decoration, not information. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

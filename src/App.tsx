@@ -42,7 +42,7 @@ function ConfigPanel({ config, onChange }: { config: Config; onChange: (cfg: Con
         style={{ minHeight: 44, paddingTop: 12, paddingBottom: 12 }}
       >
         <span className="text-ink-2 text-[15px]">
-          Your numbers —{' '}
+          Your numbers:{' '}
           <span className="text-ink">{usd(loadedRate)}/hour loaded</span>
         </span>
         <Chevron open={panelOpen} />
@@ -72,7 +72,7 @@ function ConfigPanel({ config, onChange }: { config: Config; onChange: (cfg: Con
               style={{ minHeight: 44 }}
             >
               <span className="text-ink-2 text-[15px]">
-                Monthly overhead —{' '}
+                Monthly overhead:{' '}
                 <span className="text-ink">{usd(monthlyOverhead)}</span>
               </span>
               <Chevron open={overheadOpen} />
@@ -225,7 +225,7 @@ function EntryScreen({ config, onConfigChange, onBack, onSubmit }: {
   }
 
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-6 flex-1">
 
         <button onClick={onBack}
@@ -309,7 +309,7 @@ function ResultScreen({ serviceId, charged, config, onBack }: {
   const isLoss  = gap < 0
 
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
       <div className="w-full max-w-[420px] flex flex-col gap-5 flex-1">
 
         <div>
@@ -327,13 +327,13 @@ function ResultScreen({ serviceId, charged, config, onBack }: {
               <p className="text-[13px] leading-[1.4] mb-2" style={{ color: 'var(--color-breach-ink)' }}>
                 You charged {usd(charged)}. Your floor was {usd(floor)}.
               </p>
-              <p className="text-[28px] font-medium leading-[1.2]" style={{ color: 'var(--color-breach-em)' }}>
+              <p className="mt-display text-[28px] font-medium leading-[1.2]" style={{ color: 'var(--color-breach-em)' }}>
                 That job cost you {usd(Math.abs(gap))}.
               </p>
             </>
           ) : (
             <>
-              <p className="text-[28px] font-medium leading-[1.2]" style={{ color: 'var(--color-clear-em)' }}>
+              <p className="mt-display text-[28px] font-medium leading-[1.2]" style={{ color: 'var(--color-clear-em)' }}>
                 You cleared your floor by {usd(gap)}.
               </p>
               <p className="text-[13px] leading-[1.4] mt-2" style={{ color: 'var(--color-clear-ink)' }}>
@@ -382,36 +382,67 @@ function HomeScreen({ config, onConfigChange, onPick }: {
   onConfigChange: (cfg: Config) => void
   onPick: (mode: Mode) => void
 }) {
+  const { loadedRate, monthlyOverhead, billableHours } = deriveRates(config)
+
+  const stats = [
+    { k: 'Loaded rate',    v: usd(loadedRate) + '/hr' },
+    { k: 'Overhead',       v: usd(monthlyOverhead) + '/mo' },
+    { k: 'Billable hours', v: billableHours.toFixed(0) + '/mo' },
+  ]
+
   return (
-    <div className="min-h-screen bg-paper flex flex-col items-center px-5 pt-8 pb-8">
-      <div className="w-full max-w-[420px] flex flex-col gap-6 flex-1">
+    <div className="mt-screen min-h-screen bg-paper flex flex-col items-center px-5">
+      <div className="w-full max-w-[420px] flex flex-col flex-1">
 
-        <ConfigPanel config={config} onChange={onConfigChange} />
+        <div className="flex items-baseline justify-between">
+          <span className="text-[13px] font-medium text-ink tracking-[0.02em]">Margin Truth</span>
+          <span className="text-[12px] text-ink-3">Detailing</span>
+        </div>
 
-        <div className="mt-2">
-          <h1 className="text-[18px] font-medium text-ink leading-[1.2]">
-            You're underquoting and you can't see it.
+        <div className="mt-10">
+          <h1 className="text-ink leading-[1.15] font-medium"
+            style={{ fontSize: 26, letterSpacing: '-0.015em' }}>
+            You're underquoting<br />and you can't see it.
           </h1>
-          <p className="text-ink-2 text-[15px] leading-[1.4] mt-2">
-            Every price below is built from your pay, your overhead and the product
-            you actually use.
+          <p className="text-ink-2 text-[15px] leading-[1.45] mt-3">
+            Every price here is built from what you pay yourself, what the
+            van costs you, and the product you actually put on the car.
           </p>
         </div>
 
-        <div className="flex flex-col gap-3 mt-auto">
+        {/* Their numbers, stated quietly */}
+        <div className="mt-7 border-t border-rule">
+          {stats.map(s => (
+            <div key={s.k}
+              className="flex justify-between items-baseline py-2.5 border-b border-rule">
+              <span className="text-[13px] text-ink-3">{s.k}</span>
+              <span className="mt-display text-[15px] text-ink">{s.v}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5">
+          <ConfigPanel config={config} onChange={onConfigChange} />
+        </div>
+
+        <div className="flex flex-col gap-2.5 mt-auto pt-10">
           <button onClick={() => onPick('quote')}
-            className="w-full h-12 bg-accent text-accent-ink text-[15px] font-medium rounded-[6px]"
+            className="w-full h-13 bg-accent text-accent-ink text-[15px] font-medium rounded-[6px]"
+            style={{ height: 52 }}
           >
             Price my next job
           </button>
           <button onClick={() => onPick('retro')}
-            className="w-full h-12 bg-surface border border-rule text-ink text-[15px] font-medium rounded-[6px]"
+            className="w-full bg-surface border border-rule text-ink text-[15px] font-medium rounded-[6px]"
+            style={{ height: 52 }}
           >
             Check a job I already did
           </button>
+          <p className="text-[12px] text-ink-3 text-center mt-3 leading-[1.4]">
+            Nothing leaves this phone.
+          </p>
         </div>
 
-        <Wordmark />
       </div>
     </div>
   )
